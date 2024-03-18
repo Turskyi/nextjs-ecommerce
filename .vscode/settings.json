@@ -1,0 +1,22 @@
+{
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "javascript",
+        "Log",
+        "properties",
+        "typescriptreact"
+    ],
+    "spellright.parserByClass": {
+        "Log": {
+            "parser": "code"
+        },
+        "properties": {
+            "parser": "plain"
+        }
+    }
+}
