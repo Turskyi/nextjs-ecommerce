@@ -8,6 +8,7 @@ const nextConfig = {
       { hostname: 'scontent.fyto3-1.fna.fbcdn.net' },
       { hostname: 'a.allegroimg.com' },
       { hostname: 'assets.allegrostatic.com' },
+      { hostname: 'scontent-ams4-1.cdninstagram.com' },
     ],
   },
   experimental: {
