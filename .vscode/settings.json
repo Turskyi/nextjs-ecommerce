@@ -1,22 +1,36 @@
 {
-    "spellright.language": [
-        "en"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "javascript",
-        "Log",
-        "properties",
-        "typescriptreact"
-    ],
-    "spellright.parserByClass": {
-        "Log": {
-            "parser": "code"
-        },
-        "properties": {
-            "parser": "plain"
-        }
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    80
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.trailingComma": "all",
+  "spellright.language": [
+    "en",
+    "ua"
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext",
+    "javascript",
+    "Log",
+    "properties",
+    "typescriptreact",
+    "prisma",
+    "typescript"
+  ],
+  "spellright.parserByClass": {
+    "Log": {
+      "parser": "code"
+    },
+    "properties": {
+      "parser": "plain"
+    },
+    "prisma": {
+      "parser": "code"
     }
+  }
 }
