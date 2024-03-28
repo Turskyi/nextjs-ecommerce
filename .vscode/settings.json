@@ -1,16 +1,11 @@
 {
   "editor.formatOnSave": true,
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.trailingComma": "all",
-  "spellright.language": [
-    "en",
-    "ua"
-  ],
+  "spellright.language": ["en", "uk"],
   "spellright.documentTypes": [
     "markdown",
     "latex",
