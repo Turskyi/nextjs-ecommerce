@@ -1,13 +1,25 @@
 import FormSubmitButton from '@/components/FormSubmitButton';
 import { prisma } from '@/lib/db/prisma';
+import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
 export const metadata = {
-  title: 'Add Product - An Artist Art',
+  title: 'Add Product - AnArtistArt',
 };
 
 async function addProduct(formData: FormData) {
   'use server';
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    // TODO: also check if the user is admin.
+
+    // For the callback path, it’s recommended to use “signin” (without a
+    // hyphen) to maintain consistency with NextAuth.js conventions. This
+    // aligns with the default behavior of NextAuth.js, which expects HTTP POST
+    // requests for authentication actions.
+    redirect('/api/auth/signin?callbackUrl=/add-product');
+  }
   const name = formData.get('name')?.toString();
   const description = formData.get('description')?.toString();
   const imageUrl = formData.get('imageUrl')?.toString();
@@ -22,7 +34,15 @@ async function addProduct(formData: FormData) {
   redirect('/');
 }
 
-export default function AddProductPage() {
+export default async function AddProductPage() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    // For the callback path, it’s recommended to use “signin” (without a
+    // hyphen) to maintain consistency with NextAuth.js conventions. This
+    // aligns with the default behavior of NextAuth.js, which expects HTTP POST
+    // requests for authentication actions.
+    redirect('/api/auth/signin?callbackUrl=/add-product');
+  }
   return (
     <div>
       <h1 className='text-lg mb-3 font-bold'>Add Product</h1>
