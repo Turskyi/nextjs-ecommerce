@@ -33,6 +33,12 @@ export default function RootLayout({
           property='og:image'
           content='https://an-artist-art.vercel.app/opengraph-image.png'
         />
+        <meta
+          property='og:image:secure_url'
+          content='https://an-artist-art.vercel.app/opengraph-image.png'
+        />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='530' />
         <meta property='og:url' content='https://an-artist-art.vercel.app' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='author' content='Anna Turska' />
