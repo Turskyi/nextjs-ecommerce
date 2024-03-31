@@ -9,7 +9,7 @@ import Head from 'next/head';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'AnArtistArt',
+  title: 'AnArtistArt - Handmade Dolls, Clothes, Paintings, and Accessories',
   description:
     'Handmade with love: Dolls, paintings, accessories & clothes that spark imagination (AnArtistArt).',
   openGraph: {
