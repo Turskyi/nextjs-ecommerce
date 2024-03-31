@@ -9,7 +9,7 @@ import Head from 'next/head';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'AnArtistArt - Handmade Dolls, Clothes, Paintings, and Accessories',
+  title: 'AnArtistArt - Handmade Clothes, Paintings, and Accessories',
   description:
     'Handmade with love: Dolls, paintings, accessories & clothes that spark imagination (AnArtistArt).',
   openGraph: {
@@ -38,8 +38,9 @@ export default function RootLayout({
           content='https://an-artist-art.vercel.app/opengraph-image.png'
         />
         <meta property='og:image:width' content='1200' />
-        <meta property='og:image:height' content='530' />
+        <meta property='og:image:height' content='630' />
         <meta property='og:url' content='https://an-artist-art.vercel.app' />
+        <meta property='og:type' content='website' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='author' content='Anna Turska' />
         <meta
@@ -47,6 +48,11 @@ export default function RootLayout({
           content='TypeScript, e-commerce, painting, handmade, sewing, diy, art'
         />
         <meta http-equiv='refresh' content='30' />
+        <meta
+          property='og:image:alt'
+          content='Handmade doll with fancy dress.'
+        />
+        <meta property='fb:app_id' content='433879415973046' />
       </Head>
       <body className={inter.className}>
         <SessionProvider>
