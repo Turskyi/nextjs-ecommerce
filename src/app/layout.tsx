@@ -29,6 +29,11 @@ export default function RootLayout({
     <html lang='en'>
       <Head>
         <title>{`${metadata.title}`}</title>
+        <meta property='twitter:card' content='summary_large_image' />
+        <meta
+          property='twitter:image'
+          content='https://an-artist-art.vercel.app/opengraph-image.png'
+        />
         <meta name='description' content={metadata.description || ''} />
         <meta property='og:title' content={metadata.title?.toString() || ''} />
         <meta property='og:description' content={metadata.description || ''} />
