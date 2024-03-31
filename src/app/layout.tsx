@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: 'AnArtistArt - Handmade Clothes, Paintings, and Accessories',
   description:
     'Handmade with love: Dolls, paintings, accessories & clothes that spark imagination (AnArtistArt).',
+  openGraph: {
+    images: [{ url: 'https://an-artist-art.vercel.app/opengraph-image.png' }],
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +31,11 @@ export default function RootLayout({
         <meta property='og:description' content={metadata.description || ''} />
         <meta
           property='og:image'
+          content='https://an-artist-art.vercel.app/opengraph-image.png'
+        />
+        <meta property='og:image:type' content='image/png' />
+        <meta
+          property='og:image:url'
           content='https://an-artist-art.vercel.app/opengraph-image.png'
         />
         <meta
