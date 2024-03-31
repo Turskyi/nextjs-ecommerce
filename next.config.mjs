@@ -9,6 +9,7 @@ const nextConfig = {
       { hostname: 'a.allegroimg.com' },
       { hostname: 'assets.allegrostatic.com' },
       { hostname: 'scontent-ams4-1.cdninstagram.com' },
+      { hostname: 'live.staticflickr.com' },
     ],
   },
   experimental: {
