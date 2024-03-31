@@ -23,26 +23,26 @@ export async function setProductQuantity(productId: string, quantity: number) {
     if (articleInCart) {
       await prisma.cart.update({
         where: { id: cart.id },
-        data:{
+        data: {
           items: {
             update: {
-              where: {id: articleInCart.id},
-              data: {quantity}
-            }
-          }
-        }
+              where: { id: articleInCart.id },
+              data: { quantity },
+            },
+          },
+        },
       });
     } else {
       await prisma.cart.update({
         where: { id: cart.id },
-        data:{
-          items:{
-            create:{
+        data: {
+          items: {
+            create: {
               productId,
               quantity,
-            }
-          }
-        }
+            },
+          },
+        },
       });
     }
   }
