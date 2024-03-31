@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: 'AnArtistArt - Handmade Clothes, Paintings, and Accessories',
   description:
     'Handmade with love: Dolls, paintings, accessories & clothes that spark imagination (AnArtistArt).',
+  metadataBase: new URL('https://an-artist-art.vercel.app'),
   openGraph: {
     images: [
       'https://an-artist-art.vercel.app/opengraph-image.png',
