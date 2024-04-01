@@ -1,14 +1,15 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
+![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=an-artist-art&style=plastic)
 
-# An Artist Art
+# AnArtistArt
 
-Welcome to **An Artist Art**, a platform where creativity comes to life! 🎨
+Welcome to **AnArtistArt**, a platform where creativity comes to life! 🎨
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Overview
 
-**An Artist Art** is an e-commerce project dedicated to showcasing unique and handmade creations by talented artist [Anna](https://www.instagram.com/anartistart). From stylish clothes to whimsical soft toys, each piece is crafted with care and passion.
+**AnArtistArt** is an e-commerce project dedicated to showcasing unique and handmade creations by talented artist [Anna](https://www.instagram.com/anartistart). From stylish clothes to whimsical soft toys, each piece is crafted with care and passion.
 
 ## Features
 
@@ -55,7 +56,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 - [`MongoDB`](https://www.mongodb.com/): Store product data and manage inventory.
 
-- [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Rubik, a custom Google Font.
 
 - **Tailwind CSS**: A utility-first CSS framework for rapidly building custom
   designs.
@@ -86,7 +87,7 @@ We welcome contributions! If you’re an artist, designer, or developer, feel fr
 
 ## Contact
 
-For inquiries, collaborations, or custom orders, reach out to us at dmytro@turskyi.com.
+For inquiries, collaborations, or custom orders, reach out to us at support@an-artist.store.
 
 Let’s celebrate art together! 🌟🎨
 
