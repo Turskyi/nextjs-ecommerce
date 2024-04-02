@@ -15,7 +15,8 @@
     "properties",
     "typescriptreact",
     "prisma",
-    "typescript"
+    "typescript",
+    "xml"
   ],
   "spellright.parserByClass": {
     "Log": {
