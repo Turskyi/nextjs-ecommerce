@@ -45,13 +45,13 @@ export async function getCart(): Promise<ShoppingCart | null> {
     ...cart,
     size: cart.items.reduce(
       (accumulatedValue, item) => accumulatedValue + item.quantity,
-      // Starting value.
+      // Starting value is "0".
       0,
     ),
     subtotal: cart.items.reduce(
       (accumulatedValue, item) =>
         accumulatedValue + item.quantity * item.product.price,
-      // Starting value.
+      // Starting value is "0".
       0,
     ),
   };
