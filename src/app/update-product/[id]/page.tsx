@@ -74,7 +74,7 @@ export default async function UpdateProductPage({
           required
           name='name'
           placeholder='Name'
-          value={product.name}
+          defaultValue={product.name}
           //   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           className='mb-3 w-full input input-bordered'
         />
@@ -82,7 +82,7 @@ export default async function UpdateProductPage({
           required
           name='description'
           placeholder='Description'
-          value={product.description}
+          defaultValue={product.description}
           className='textarea textarea-bordered mb-3 w-full'
         />
         <input
@@ -90,7 +90,7 @@ export default async function UpdateProductPage({
           name='imageUrl'
           placeholder='Image URL'
           type='url'
-          value={product.imageUrl}
+          defaultValue={product.imageUrl}
           className='mb-3 w-full input input-bordered'
         />
         <input
@@ -98,7 +98,7 @@ export default async function UpdateProductPage({
           name='price'
           placeholder='Price'
           type='number'
-          value={product.price}
+          defaultValue={product.price}
           className='mb-3 w-full input input-bordered'
         />
         <FormSubmitButton className='btn-block'>
