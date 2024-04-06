@@ -18,6 +18,8 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {
       session.user.id = user.id;
+      session.user.isAdmin =
+        user.email === env.ADMIN || user.email === env.SUPER_ADMIN;
       return session;
     },
   },

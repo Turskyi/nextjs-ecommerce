@@ -6,6 +6,8 @@ const envSchema = zod.object({
   GOOGLE_CLIENT_SECRET: zod.string().nonempty(),
   NEXTAUTH_URL: zod.string().nonempty(),
   NEXTAUTH_SECRET: zod.string().nonempty(),
+  ADMIN: zod.string().nonempty(),
+  SUPER_ADMIN: zod.string().nonempty(),
 });
 
 export const env = envSchema.parse(process.env);
