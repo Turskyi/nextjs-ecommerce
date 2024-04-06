@@ -1,17 +1,16 @@
-
-import { UserResource } from "@clerk/types";
-import { clsx, type ClassValue } from "clsx";
-import { formatDistanceToNowStrict } from "date-fns";
-import { twMerge } from "tailwind-merge";
+import { clsx, type ClassValue } from 'clsx';
+import { formatDistanceToNowStrict } from 'date-fns';
+import { Session } from 'next-auth';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 export function formatMoney(amount: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   }).format(amount);
 }
 
@@ -22,10 +21,10 @@ export function relativeDate(from: Date) {
 export function toSlug(str: string) {
   return str
     .toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/[^\w-]+/g, "");
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
 }
 
-export function isAdmin(user: UserResource | User) {
-  return user.publicMetadata?.role === "admin";
+export function isAdmin(session: Session | null) {
+  return session?.user.isAdmin;
 }

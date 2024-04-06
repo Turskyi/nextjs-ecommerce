@@ -7,6 +7,8 @@ import ShoppingCartButton from './ShoppingCartButton';
 import UserMenuButton from './UserMenuButton';
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/configs/auth/authOptions';
+import { Button } from '@/components/ui/button';
+import { isAdmin } from '@/lib/utils';
 
 async function searchProducts(formData: FormData) {
   'use server';
@@ -30,7 +32,7 @@ export default async function Navbar() {
               src={logoWithoutBg}
               height={40}
               width={40}
-              alt='An Artist Art logo'
+              alt='AnArtistArt logo'
             />
             AnArtistArt
           </Link>
@@ -47,6 +49,12 @@ export default async function Navbar() {
           </form>
           <ShoppingCartButton cart={cart} />
           <UserMenuButton session={session} />
+
+          {isAdmin(session) && (
+            <Button asChild>
+              <Link href='/add-product'>Post a product</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>
