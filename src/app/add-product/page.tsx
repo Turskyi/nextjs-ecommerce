@@ -1,6 +1,7 @@
 import FormSubmitButton from '@/components/FormSubmitButton';
 import authOptions from '@/lib/configs/auth/authOptions';
 import { prisma } from '@/lib/db/prisma';
+import { env } from '@/lib/env';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
@@ -20,6 +21,7 @@ async function addProduct(formData: FormData) {
     // requests for authentication actions.
     redirect('/api/auth/signin?callbackUrl=/add-product');
   }
+
   const name = formData.get('name')?.toString();
   const description = formData.get('description')?.toString();
   const imageUrl = formData.get('imageUrl')?.toString();
@@ -43,6 +45,11 @@ export default async function AddProductPage() {
     // requests for authentication actions.
     redirect('/api/auth/signin?callbackUrl=/add-product');
   }
+
+  if (!session.user.isAdmin) {
+    return <div>Please login as an admin.</div>;
+  }
+
   return (
     <div>
       <h1 className='text-lg mb-3 font-bold'>Add Product</h1>
