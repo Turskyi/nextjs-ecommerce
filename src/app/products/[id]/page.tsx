@@ -5,7 +5,16 @@ import PriceTag from '@/components/PriceTag';
 import { Metadata } from 'next';
 import { cache } from 'react';
 import AddToCartButton from './AddToCartButton';
-import { incrementProductQuantity } from './actions';
+import {
+  incrementProductQuantity,
+  deleteProduct,
+  updateProduct,
+} from './actions';
+import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/configs/auth/authOptions';
+import { isAdmin } from '@/lib/utils';
+import UpdateProductButton from './UpdateProductButton';
+import DeleteProductButton from './DeleteProductButton';
 
 interface ProductPageProps {
   params: {
@@ -36,7 +45,7 @@ export default async function ProductPage({
   params: { id },
 }: ProductPageProps) {
   const product = await getProduct(id);
-
+  const session = await getServerSession(authOptions);
   return (
     <div className='flex flex-col lg:flex-row gap-4 lg:items-center'>
       <Image
@@ -51,10 +60,23 @@ export default async function ProductPage({
         <h1 className='text-5xl font-bold'>{product.name}</h1>
         <PriceTag price={product.price} className='mt-4' />
         <p className='py-6'>{product.description}</p>
-        <AddToCartButton
-          productId={product.id}
-          incrementProductQuantity={incrementProductQuantity}
-        />
+        {isAdmin(session) ? (
+          <>
+            <UpdateProductButton
+              productId={product.id}
+              updateProduct={updateProduct}
+            />
+            <DeleteProductButton
+              productId={product.id}
+              deleteProduct={deleteProduct}
+            />
+          </>
+        ) : (
+          <AddToCartButton
+            productId={product.id}
+            incrementProductQuantity={incrementProductQuantity}
+          />
+        )}
       </div>
     </div>
   );
