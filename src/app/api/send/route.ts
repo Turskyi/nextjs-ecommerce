@@ -1,9 +1,12 @@
 import { env } from '@/lib/env';
+import { NextRequest } from 'next/server';
 import { Resend } from 'resend';
 
 const resend = new Resend(env.RESEND_API_KEY);
 
-export async function send(message: string) {
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  const { message } = body;
   try {
     const data = await resend.emails.send({
       //TODO: replace with production emails

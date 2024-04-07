@@ -3,9 +3,10 @@
 import { ShoppingCart, createCart, getCart } from '@/lib/db/cart';
 import { prisma } from '@/lib/db/prisma';
 import { revalidatePath } from 'next/cache';
-import { send } from '../api/send/route';
 import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/configs/auth/authOptions';
+import { env } from '@/lib/env';
+import { formatPrice } from '@/lib/format';
 
 export async function setProductQuantity(productId: string, quantity: number) {
   const cart = (await getCart()) ?? (await createCart());
@@ -59,13 +60,27 @@ export async function sendEmail(cart: ShoppingCart) {
   const message = `New order received ${cart.id}:\n\n${cart.items
     .map(
       (item) =>
-        `Item ID: ${item.id}\nItem Name: ${item.product.name}\nQuantity: ${item.quantity}\nPrice: ${item.product.price}\n\n`,
+        `Item ID: ${item.id}\nItem Name: ${item.product.name}\nQuantity: ${item.quantity}\nPrice: ${formatPrice(item.product.price)}\n\n`,
     )
     .join(
       '',
     )}\n\nTotal: ${cart.subtotal}\n\nEmail: ${session?.user.email}\n\nName: ${session?.user.name}.`;
-
-  await send(message);
+  try {
+    await fetch(`${env.NEXTAUTH_URL}/api/send`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  } catch (error) {
+    console.error('Error sending email:', error);
+  }
 
   revalidatePath('/cart');
 }

@@ -1,7 +1,6 @@
 import FormSubmitButton from '@/components/FormSubmitButton';
 import authOptions from '@/lib/configs/auth/authOptions';
 import { prisma } from '@/lib/db/prisma';
-import { env } from '@/lib/env';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { APP_NAME } from '../../../constants';
@@ -76,7 +75,7 @@ export default async function AddProductPage() {
         />
         <input
           required
-          name='price'
+          name='price in cents'
           placeholder='Price'
           type='number'
           className='mb-3 w-full input input-bordered'
