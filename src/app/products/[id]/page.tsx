@@ -15,6 +15,7 @@ import authOptions from '@/lib/configs/auth/authOptions';
 import { isAdmin } from '@/lib/utils';
 import UpdateProductButton from './UpdateProductButton';
 import DeleteProductButton from './DeleteProductButton';
+import { APP_NAME } from '../../../../constants';
 
 interface ProductPageProps {
   params: {
@@ -33,7 +34,7 @@ export async function generateMetadata({
 }: ProductPageProps): Promise<Metadata> {
   const product = await getProduct(id);
   return {
-    title: product.name + ' - AnArtistArt',
+    title: product.name + ' - ' + APP_NAME,
     description: product.description,
     openGraph: {
       images: [{ url: product.imageUrl }],

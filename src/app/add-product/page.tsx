@@ -4,9 +4,10 @@ import { prisma } from '@/lib/db/prisma';
 import { env } from '@/lib/env';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import { APP_NAME } from '../../../constants';
 
 export const metadata = {
-  title: 'Add Product - AnArtistArt',
+  title: `Add Product - ${APP_NAME}`,
 };
 
 async function addProduct(formData: FormData) {

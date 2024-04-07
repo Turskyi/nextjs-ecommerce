@@ -9,6 +9,7 @@ import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/configs/auth/authOptions';
 import { Button } from '@/components/ui/button';
 import { isAdmin } from '@/lib/utils';
+import { APP_NAME } from '../../../constants';
 
 async function searchProducts(formData: FormData) {
   'use server';
@@ -32,9 +33,9 @@ export default async function Navbar() {
               src={logoWithoutBg}
               height={40}
               width={40}
-              alt='AnArtistArt logo'
+              alt={`${APP_NAME} logo`}
             />
-            AnArtistArt
+            {APP_NAME}
           </Link>
         </div>
         <div className='flex-none gap-2'>

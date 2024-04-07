@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { cache } from 'react';
 import { notFound } from 'next/navigation';
+import { APP_NAME } from '../../../../constants';
 
 interface UpdateProductPageProps {
   params: {
@@ -13,7 +14,7 @@ interface UpdateProductPageProps {
 }
 
 export const metadata = {
-  title: 'Update Product - AnArtistArt',
+  title: `Update Product - ${APP_NAME}`,
 };
 
 const getProduct = cache(async (id: string) => {
