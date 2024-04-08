@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { cache } from 'react';
 import { notFound } from 'next/navigation';
 import { APP_NAME } from '../../../../constants';
+import PriceInput from '@/components/PriceInput';
 
 interface UpdateProductPageProps {
   params: {
@@ -94,14 +95,7 @@ export default async function UpdateProductPage({
           defaultValue={product.imageUrl}
           className='mb-3 w-full input input-bordered'
         />
-        <input
-          required
-          name='price'
-          placeholder='Price'
-          type='number'
-          defaultValue={product.price}
-          className='mb-3 w-full input input-bordered'
-        />
+        <PriceInput defaultValue={product.price} />
         <FormSubmitButton className='btn-block'>
           Update Product
         </FormSubmitButton>

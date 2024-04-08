@@ -4,6 +4,7 @@ import { prisma } from '@/lib/db/prisma';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { APP_NAME } from '../../../constants';
+import PriceInput from '../../components/PriceInput';
 
 export const metadata = {
   title: `Add Product - ${APP_NAME}`,
@@ -73,13 +74,7 @@ export default async function AddProductPage() {
           type='url'
           className='mb-3 w-full input input-bordered'
         />
-        <input
-          required
-          name='price in cents'
-          placeholder='Price'
-          type='number'
-          className='mb-3 w-full input input-bordered'
-        />
+        <PriceInput defaultValue={0} />
         <FormSubmitButton className='btn-block'>Add Product</FormSubmitButton>
       </form>
     </div>
