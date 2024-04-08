@@ -54,8 +54,18 @@ export async function setProductQuantity(productId: string, quantity: number) {
   revalidatePath('/cart');
 }
 
-export async function sendEmail(cart: ShoppingCart) {
-  const session = await getServerSession(authOptions);
+export interface ContactInfo {
+  email: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+export async function sendEmail(cart: ShoppingCart, contactInfo: ContactInfo) {
   // Format the order details into a message
   const message = `New order received ${cart.id}:\n\n${cart.items
     .map(
@@ -64,7 +74,7 @@ export async function sendEmail(cart: ShoppingCart) {
     )
     .join(
       '',
-    )}\n\nTotal: ${cart.subtotal}\n\nEmail: ${session?.user.email}\n\nName: ${session?.user.name}.`;
+    )}\n\nTotal: ${formatPrice(cart.subtotal)}\n\nEmail: ${contactInfo.email}\n\nName: ${contactInfo.firstName} ${contactInfo.lastName}\n\nPhone: ${contactInfo.phoneNumber}\n\nStreet: ${contactInfo.street}\n\nCity: ${contactInfo.city}\n\nPostal code: ${contactInfo.postalCode}\n\nCountry: ${contactInfo.country}.`;
   try {
     await fetch(`${env.NEXTAUTH_URL}/api/send`, {
       method: 'POST',
