@@ -44,6 +44,7 @@ export async function incrementProductQuantity(productId: string) {
 export async function deleteProduct(productId: string) {
   try {
     const session = await getServerSession(authOptions);
+    
     if (!isAdmin(session)) {
       throw new Error('Not authorized');
     }

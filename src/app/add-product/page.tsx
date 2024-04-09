@@ -61,6 +61,7 @@ export default function AddProductPage() {
             if (!inputFileRef.current?.value || !inputFileRef.current?.files) {
               throw new Error('No file selected');
             }
+            
             const productImage = inputFileRef.current.files[0];
             const response = await fetch(
               `/api/image/upload?filename=product_images/${slug}${path.extname(productImage.name)}`,
