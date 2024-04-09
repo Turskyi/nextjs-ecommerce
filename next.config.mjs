@@ -12,6 +12,7 @@ const nextConfig = {
       { hostname: 'live.staticflickr.com' },
       { hostname: 'an-artist.store' },
       { hostname: 'www.flickr.com' },
+      { hostname: '*.public.blob.vercel-storage.com' },
     ],
   },
   experimental: {

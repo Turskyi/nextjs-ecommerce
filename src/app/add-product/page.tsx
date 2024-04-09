@@ -1,56 +1,18 @@
+'use client';
+
 import FormSubmitButton from '@/components/FormSubmitButton';
-import authOptions from '@/lib/configs/auth/authOptions';
-import { prisma } from '@/lib/db/prisma';
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
-import { APP_NAME } from '../../../constants';
-import PriceInput from '../../components/PriceInput';
+import PriceInput from '@/components/PriceInput';
+import { toSlug } from '@/lib/utils';
+import { nanoid } from 'nanoid';
+import path from 'path';
+import type { PutBlobResult } from '@vercel/blob';
+import { useState, useRef } from 'react';
+import { addProduct } from './actions';
 
-export const metadata = {
-  title: `Add Product - ${APP_NAME}`,
-};
-
-async function addProduct(formData: FormData) {
-  'use server';
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    // TODO: also check if the user is admin.
-
-    // For the callback path, it’s recommended to use “signin” (without a
-    // hyphen) to maintain consistency with NextAuth.js conventions. This
-    // aligns with the default behavior of NextAuth.js, which expects HTTP POST
-    // requests for authentication actions.
-    redirect('/api/auth/signin?callbackUrl=/add-product');
-  }
-
-  const name = formData.get('name')?.toString();
-  const description = formData.get('description')?.toString();
-  const imageUrl = formData.get('imageUrl')?.toString();
-  const price = Number(formData.get('price') || 0);
-  if (!name || !description || !imageUrl || !price) {
-    throw Error('Missing required fields.');
-  }
-  await prisma.product.create({
-    data: { name, description, imageUrl, price },
-  });
-
-  redirect('/');
-}
-
-export default async function AddProductPage() {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    // For the callback path, it’s recommended to use “signin” (without a
-    // hyphen) to maintain consistency with NextAuth.js conventions. This
-    // aligns with the default behavior of NextAuth.js, which expects HTTP POST
-    // requests for authentication actions.
-    redirect('/api/auth/signin?callbackUrl=/add-product');
-  }
-
-  if (!session.user.isAdmin) {
-    return <div>Please login as an admin.</div>;
-  }
-
+export default function AddProductPage() {
+  const inputFileRef = useRef<HTMLInputElement>(null);
+  const inputNameRef = useRef<HTMLInputElement>(null);
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
   return (
     <div>
       <h1 className='text-lg mb-3 font-bold'>Add Product</h1>
@@ -59,6 +21,7 @@ export default async function AddProductPage() {
           required
           name='name'
           placeholder='Name'
+          ref={inputNameRef}
           className='mb-3 w-full input input-bordered'
         />
         <textarea
@@ -72,8 +35,48 @@ export default async function AddProductPage() {
           name='imageUrl'
           placeholder='Image URL'
           type='url'
+          defaultValue={blob?.url}
           className='mb-3 w-full input input-bordered'
         />
+        <input
+          className='file-input'
+          style={{ marginBottom: '10px', marginLeft: '4px' }}
+          name='productImage'
+          ref={inputFileRef}
+          type='file'
+          required
+        />
+        <button
+          className='btn btn-primary'
+          style={{ marginBottom: '10px', marginLeft: '12px' }}
+          type='submit'
+          onClick={async (event) => {
+            event.preventDefault();
+            const name = inputNameRef?.current?.value;
+            if (!name) {
+              throw new Error('First enter the name');
+            }
+            const slug = `${toSlug(name)}-${nanoid(10)}`;
+     
+            if (!inputFileRef.current?.value || !inputFileRef.current?.files) {
+              throw new Error('No file selected');
+            }
+            const productImage = inputFileRef.current.files[0];
+            const response = await fetch(
+              `/api/image/upload?filename=product_images/${slug}${path.extname(productImage.name)}`,
+              {
+                method: 'POST',
+                body: productImage,
+              },
+            );
+
+            const newBlob = (await response.json()) as PutBlobResult;
+
+            setBlob(newBlob);
+          }}
+        >
+          Upload
+        </button>
         <PriceInput defaultValue={0} />
         <FormSubmitButton className='btn-block'>Add Product</FormSubmitButton>
       </form>

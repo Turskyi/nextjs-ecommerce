@@ -9,6 +9,7 @@ const envSchema = zod.object({
   ADMIN: zod.string().nonempty(),
   SUPER_ADMIN: zod.string().nonempty(),
   RESEND_API_KEY: zod.string().nonempty(),
+  BLOB_READ_WRITE_TOKEN: zod.string().nonempty(),
 });
 
 export const env = envSchema.parse(process.env);
