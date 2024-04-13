@@ -6,13 +6,12 @@ const resend = new Resend(env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { message } = body;
+  const { subject, message } = body;
   try {
     const data = await resend.emails.send({
-      //TODO: replace with production emails
-      from: 'AnArtistStore <dmytro@an-artist.store>',
-      to: ['dmytro.turskyi@gmail.com'],
-      subject: 'New Order Received',
+      from: 'AnArtist.Store <anna@an-artist.store>',
+      to: [env.ADMIN, env.SUPER_ADMIN],
+      subject: subject,
       text: message,
     });
     return Response.json(data);
