@@ -1,6 +1,7 @@
 import ProductCard from '@/components/ProductCard';
 import { prisma } from '@/lib/db/prisma';
 import { Metadata } from 'next';
+import { APP_NAME } from '../../../constants';
 
 interface SearchPageProps {
   searchParams: { query: string };
@@ -10,7 +11,7 @@ export function generateMetadata({
   searchParams: { query },
 }: SearchPageProps): Metadata {
   return {
-    title: `Search: ${query} - AnArtistArt`,
+    title: `Search: ${query} - ${APP_NAME}`,
   };
 }
 

@@ -9,6 +9,7 @@ import { getServerSession } from 'next-auth';
 import authOptions from '@/lib/configs/auth/authOptions';
 import { Button } from '@/components/ui/button';
 import { isAdmin } from '@/lib/utils';
+import { APP_NAME } from '../../../constants';
 
 async function searchProducts(formData: FormData) {
   'use server';
@@ -32,11 +33,19 @@ export default async function Navbar() {
               src={logoWithoutBg}
               height={40}
               width={40}
-              alt='AnArtistArt logo'
+              alt={`${APP_NAME} logo`}
             />
-            AnArtistArt
+            {APP_NAME}
           </Link>
         </div>
+        {isAdmin(session) && (
+          <h2
+            className='flex-1 text-xl font-bold text-center'
+            style={{ color: '#f3d3c9' }}
+          >
+            ADMIN PANEL
+          </h2>
+        )}
         <div className='flex-none gap-2'>
           <form action={searchProducts}>
             <div className='form-control'>
