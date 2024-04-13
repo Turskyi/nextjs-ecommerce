@@ -2,6 +2,7 @@
 
 import { env } from '@/lib/env';
 import { redirect } from 'next/navigation';
+import { APP_NAME } from '../../../constants';
 
 export interface ContactEmail {
   email: string;
@@ -10,7 +11,7 @@ export interface ContactEmail {
 }
 
 export async function sendContactEmail(contactEmail: ContactEmail) {
-  const subject = 'New Message Received from AnArtist.Store';
+  const subject = `New Message Received from ${APP_NAME}`;
   // Format the order details into a message
   const message = `New contact message received:\n\nEmail: ${contactEmail.email}\n\nName: ${contactEmail.name}\n\nMessage: ${contactEmail.message}.`;
   try {

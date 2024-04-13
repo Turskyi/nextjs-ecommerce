@@ -1,3 +1,5 @@
+import { INSTAGRAM } from '../../../constants';
+
 export default function PressKit() {
   return (
     <div className='bg-body background-color text-body color p-5'>
@@ -44,7 +46,7 @@ export default function PressKit() {
           <p className='text-lg'>
             For press inquiries, please contact Anna via Instagram:&nbsp;
             <a
-              href='https://www.instagram.com/anartistdoll/'
+              href={INSTAGRAM}
               className='text-accent hover:underline'
               target='_blank'
               rel='noopener noreferrer'
