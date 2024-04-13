@@ -5,6 +5,7 @@ import { prisma } from '@/lib/db/prisma';
 import { revalidatePath } from 'next/cache';
 import { env } from '@/lib/env';
 import { formatPrice } from '@/lib/format';
+import { APP_NAME } from '../../../constants';
 
 export async function setProductQuantity(productId: string, quantity: number) {
   const cart = (await getCart()) ?? (await createCart());
@@ -67,7 +68,7 @@ export async function sendOrderEmail(
   cart: ShoppingCart,
   contactInfo: ContactInfo,
 ) {
-  const subject = 'New Order Received from AnArtist.Store';
+  const subject = `New Order Received from ${APP_NAME}`;
   // Format the order details into a message
   const message = `New order received ${cart.id}:\n\n${cart.items
     .map(

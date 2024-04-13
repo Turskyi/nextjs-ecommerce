@@ -1,6 +1,7 @@
 import { env } from '@/lib/env';
 import { NextRequest } from 'next/server';
 import { Resend } from 'resend';
+import { APP_NAME } from '../../../../constants';
 
 const resend = new Resend(env.RESEND_API_KEY);
 
@@ -9,7 +10,7 @@ export async function POST(request: NextRequest) {
   const { subject, message } = body;
   try {
     const data = await resend.emails.send({
-      from: 'AnArtist.Store <anna@an-artist.store>',
+      from: `${APP_NAME} <sales@an-artist.store>`,
       to: [env.ADMIN, env.SUPER_ADMIN],
       subject: subject,
       text: message,
