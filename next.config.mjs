@@ -13,6 +13,8 @@ const nextConfig = {
       { hostname: 'an-artist.store' },
       { hostname: 'www.flickr.com' },
       { hostname: '*.public.blob.vercel-storage.com' },
+      { hostname: 'dl.dropboxusercontent.com' },
+      { hostname: 'www.dropbox.com' },
     ],
   },
   experimental: {

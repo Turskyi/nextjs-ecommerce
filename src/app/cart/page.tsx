@@ -1,6 +1,10 @@
 import { getCart } from '@/lib/db/cart';
 import CartEntry from './CartEntry';
-import { setProductQuantity, sendEmail, deleteCart } from './actions';
+import {
+  setProductQuantity,
+  sendOrderEmail as sendOrderEmail,
+  deleteCart,
+} from './actions';
 import { formatPrice } from '@/lib/format';
 import CheckoutButton from './CheckoutButton';
 import { APP_NAME } from '../../../constants';
@@ -37,7 +41,7 @@ async function submitOrder(formData: FormData) {
   if (!cart) {
     throw new Error('Cart is empty');
   }
-  await sendEmail(cart, {
+  await sendOrderEmail(cart, {
     email,
     firstName,
     lastName,

@@ -61,14 +61,12 @@ export default function UpdateForm({ product }: UpdateFormProps) {
         name='productImage'
         ref={inputFileRef}
         type='file'
-        required
       />
       <button
         className='btn btn-primary'
         style={{ marginBottom: '10px', marginLeft: '12px' }}
         type='submit'
         onClick={async (event) => {
-          console.log('Deb: click');
           event.preventDefault();
           const name = inputNameRef?.current?.value;
           if (!name) {
@@ -89,7 +87,6 @@ export default function UpdateForm({ product }: UpdateFormProps) {
           );
 
           const newBlob = (await response.json()) as PutBlobResult;
-          console.log('Deb: update');
           setBlob(newBlob);
         }}
       >

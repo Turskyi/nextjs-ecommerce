@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react';
 import FormSubmitButton from '@/components/FormSubmitButton';
 
 export default function CheckoutButton() {
+  //TODO: move these parameters up and pass them as parameters.
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
 

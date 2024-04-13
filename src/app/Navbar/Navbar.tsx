@@ -38,6 +38,14 @@ export default async function Navbar() {
             {APP_NAME}
           </Link>
         </div>
+        {isAdmin(session) && (
+          <h2
+            className='flex-1 text-xl font-bold text-center'
+            style={{ color: '#f3d3c9' }}
+          >
+            ADMIN PANEL
+          </h2>
+        )}
         <div className='flex-none gap-2'>
           <form action={searchProducts}>
             <div className='form-control'>

@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' style={{ backgroundColor: '#f3d3c9' }}>
       <Head>
         <title>{`${metadata.title}`}</title>
         <meta property='twitter:card' content='summary_large_image' />

@@ -3,8 +3,6 @@
 import { ShoppingCart, createCart, getCart } from '@/lib/db/cart';
 import { prisma } from '@/lib/db/prisma';
 import { revalidatePath } from 'next/cache';
-import { getServerSession } from 'next-auth';
-import authOptions from '@/lib/configs/auth/authOptions';
 import { env } from '@/lib/env';
 import { formatPrice } from '@/lib/format';
 
@@ -65,7 +63,10 @@ export interface ContactInfo {
   country: string;
 }
 
-export async function sendEmail(cart: ShoppingCart, contactInfo: ContactInfo) {
+export async function sendOrderEmail(
+  cart: ShoppingCart,
+  contactInfo: ContactInfo,
+) {
   // Format the order details into a message
   const message = `New order received ${cart.id}:\n\n${cart.items
     .map(
@@ -84,7 +85,6 @@ export async function sendEmail(cart: ShoppingCart, contactInfo: ContactInfo) {
       body: JSON.stringify({ message }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
       .catch((error) => {
         console.error('Error:', error);
       });

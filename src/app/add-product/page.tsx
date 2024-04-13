@@ -44,7 +44,6 @@ export default function AddProductPage() {
           name='productImage'
           ref={inputFileRef}
           type='file'
-          required
         />
         <button
           className='btn btn-primary'
