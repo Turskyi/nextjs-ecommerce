@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { INSTAGRAM } from '../../../constants';
 
 export default function AboutUs() {
   return (
@@ -92,7 +93,7 @@ export default function AboutUs() {
               className='text-accent hover:underline'
               target='_blank'
               rel='noopener noreferrer'
-              href='https://www.instagram.com/anartistdoll/'
+              href={INSTAGRAM}
             >
               @anartistdoll
             </Link>
