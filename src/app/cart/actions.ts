@@ -67,6 +67,7 @@ export async function sendOrderEmail(
   cart: ShoppingCart,
   contactInfo: ContactInfo,
 ) {
+  const subject = 'New Order Received from AnArtist.Store';
   // Format the order details into a message
   const message = `New order received ${cart.id}:\n\n${cart.items
     .map(
@@ -82,7 +83,7 @@ export async function sendOrderEmail(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ subject, message }),
     })
       .then((response) => response.json())
       .catch((error) => {
