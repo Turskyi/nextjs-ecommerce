@@ -18,13 +18,13 @@ whimsical soft toys, each piece is crafted with care and passion.
 
 ## Features
 
-Gallery: Explore our gallery to discover a delightful collection of artistic
-creations.
-Product Details: Click on any item to view detailed information, including
-descriptions, materials, and pricing.
-Cart: Mark your favorite pieces and create your personalized cart.
-Contact: Have questions or want to place an order?
-Reach out to us via the contact form.
+- Gallery: Explore our gallery to discover a delightful collection of artistic
+  creations.
+- Product Details: Click on any item to view detailed information, including
+  descriptions, materials, and pricing.
+- Cart: Mark your favorite pieces and create your personalized cart.
+- Contact: Have questions or want to place an order?
+  Reach out to us via the contact form.
 
 ## Getting Started
 
