@@ -108,6 +108,11 @@ support@turskyi.com.
 
 Let’s celebrate art together! 🌟🎨
 
+## Screenshot:
+
+<!--suppress CheckImageSize -->
+<img src="screenshots/Web-Screenshot-2024-04-14.png" width="700"  alt="screenshot">
+
 ## Credits
 
 This project is based on the
