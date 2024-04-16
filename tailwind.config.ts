@@ -11,18 +11,18 @@ const config: Config = {
     themes: [
       {
         lightTheme: {
-          primary: '#e2c3c2',
-          secondary: '#f4f4a1',
+          primary: '#FBB8AC',
+          secondary: '#FEEAE6',
           accent: '#1be885',
-          neutral: '#f3d3c9',
+          neutral: '#FEDBD0',
           'base-100': '#ffffff',
           info: '#778ad4',
           success: '#23b893',
           warning: '#f79926',
-          error: '#ea535a',
+          error: '#C5032B',
           body: {
-            'background-color': '#f5f1f5', // This way we can add a dark theme with a different background color.
-            color: '#442B2D',
+            'background-color': '#FFF4F2', // This way we can add a dark theme with a different background color.
+            color: '#442C2E',
           },
         },
       },
