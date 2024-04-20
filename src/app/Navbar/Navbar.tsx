@@ -25,7 +25,7 @@ export default async function Navbar() {
   const session = await getServerSession(authOptions);
   const cart = await getCart();
   return (
-    <div className='bg-base-100'>
+    <div className='bg-neutral'>
       <div className='navbar max-w-7xl m-auto flex-col sm:flex-row gap-2'>
         <div className='flex-1'>
           <Link href='/' className='btn btn-ghost text-xl normal-case'>
@@ -41,7 +41,7 @@ export default async function Navbar() {
         {isAdmin(session) && (
           <h2
             className='flex-1 text-xl font-bold text-center'
-            style={{ color: '#f3d3c9' }}
+            style={{ color: 'white' }}
           >
             ADMIN PANEL
           </h2>
