@@ -1,5 +1,6 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
 ![Vercel Deploy](https://therealsujitk-vercel-badge.vercel.app/?app=an-artist-art&style=plastic)
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Turskyi/nextjs-ecommerce">
 
 # AnArtist.Store
 
