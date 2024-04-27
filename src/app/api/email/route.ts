@@ -10,19 +10,15 @@ export async function POST(request: NextRequest) {
   const { email, subject, message } = body;
   try {
     const data = await resend.emails.send({
-      from: email,
+      from: `${APP_NAME} <test@an-artist.store>`,
       to: [env.SUPER_ADMIN],
-      subject: subject,
-      text: message,
+      subject: `Test: ${subject}`,
+      text: `Test.\n\n${message}\n\nEmail: ${email}`,
     });
-    await resend.emails.send({
-      from: `${APP_NAME} <${env.SUPER_ADMIN}>`,
-      to: [email],
-      subject: `Test. Order Details: ${APP_NAME}`,
-      text: `Test. Thank you for your order! Someone from our store will contact you shortly to discuss payment and delivery options.\n\n${message}`,
-    });
+
     return Response.json(data);
   } catch (error) {
+    console.log('DEb: error' + error);
     return Response.json({ error });
   }
 }
