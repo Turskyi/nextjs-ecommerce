@@ -68,9 +68,10 @@ export async function sendOrderEmail(
   cart: ShoppingCart,
   contactInfo: ContactInfo,
 ) {
+  const email = contactInfo.email;
   const subject = `New Order Received from ${APP_NAME}`;
   // Format the order details into a message
-  const message = `New order received ${cart.id}:\n\n${cart.items
+  const message = `Order ${cart.id}:\n\n${cart.items
     .map(
       (item) =>
         `Item ID: ${item.id}\nItem Name: ${item.product.name}\nQuantity: ${item.quantity}\nPrice: ${formatPrice(item.product.price)}\n\n`,
@@ -79,12 +80,12 @@ export async function sendOrderEmail(
       '',
     )}\n\nTotal: ${formatPrice(cart.subtotal)}\n\nEmail: ${contactInfo.email}\n\nName: ${contactInfo.firstName} ${contactInfo.lastName}\n\nPhone: ${contactInfo.phoneNumber}\n\nStreet: ${contactInfo.street}\n\nCity: ${contactInfo.city}\n\nPostal code: ${contactInfo.postalCode}\n\nCountry: ${contactInfo.country}.`;
   try {
-    await fetch(`${env.NEXTAUTH_URL}/api/send`, {
+    await fetch(`${env.NEXTAUTH_URL}/api/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ subject, message }),
+      body: JSON.stringify({ email, subject, message }),
     })
       .then((response) => response.json())
       .catch((error) => {

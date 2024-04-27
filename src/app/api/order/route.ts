@@ -18,8 +18,8 @@ export async function POST(request: NextRequest) {
     await resend.emails.send({
       from: `${APP_NAME} <${env.ADMIN}>`,
       to: [email],
-      subject: `Thank You! Your Support Message Has Been Sent to ${APP_NAME}`,
-      text: `Thank you for reaching out to us! Your support message has been received and will be reviewed promptly. We appreciate your feedback and will get back to you soon.\n\nBest regards,\nThe ${APP_NAME} Team.`,
+      subject: `Order Details: ${APP_NAME}`,
+      text: `Thank you for your order! Someone from our store will contact you shortly to discuss payment and delivery options.\n\n${message}`,
     });
     return Response.json(data);
   } catch (error) {

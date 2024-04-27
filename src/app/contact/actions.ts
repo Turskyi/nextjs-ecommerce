@@ -11,6 +11,7 @@ export interface ContactEmail {
 }
 
 export async function sendContactEmail(contactEmail: ContactEmail) {
+  const email = contactEmail.email;
   const subject = `New Message Received from ${APP_NAME}`;
   // Format the order details into a message
   const message = `New contact message received:\n\nEmail: ${contactEmail.email}\n\nName: ${contactEmail.name}\n\nMessage: ${contactEmail.message}.`;
@@ -20,7 +21,7 @@ export async function sendContactEmail(contactEmail: ContactEmail) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ subject, message }),
+      body: JSON.stringify({ email, subject, message }),
     })
       .then((response) => response.json())
       .catch((error) => {
