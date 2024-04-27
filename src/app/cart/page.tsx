@@ -73,7 +73,7 @@ export default async function CartPage() {
           ))}
           {!cart?.items.length && <p>Your cart is empty.</p>}
         </div>
-        {/* Vertical devider */}
+        {/* Vertical divider */}
         <div className='w-min'>
           <div
             className='w-4/5 ml-4 border-divider'
