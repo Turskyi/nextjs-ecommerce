@@ -10,13 +10,13 @@ export async function POST(request: NextRequest) {
   const { email, subject, message } = body;
   try {
     const data = await resend.emails.send({
-      from: email,
+      from: `${APP_NAME} <no-reply@an-artist.store>`,
       to: [env.ADMIN, env.SUPER_ADMIN],
       subject: subject,
       text: message,
     });
     await resend.emails.send({
-      from: `${APP_NAME} <${env.ADMIN}>`,
+      from: `${APP_NAME} <no-reply@an-artist.store>`,
       to: [email],
       subject: `Order Details: ${APP_NAME}`,
       text: `Thank you for your order! Someone from our store will contact you shortly to discuss payment and delivery options.\n\n${message}`,
