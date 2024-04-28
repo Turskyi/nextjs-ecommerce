@@ -15,6 +15,7 @@ const nextConfig = {
       { hostname: '*.public.blob.vercel-storage.com' },
       { hostname: 'dl.dropboxusercontent.com' },
       { hostname: 'www.dropbox.com' },
+      { hostname: 'play.google.com' },
     ],
   },
   experimental: {
