@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FLICKR, INSTAGRAM } from '../../constants';
 
 export default function Footer() {
@@ -77,6 +78,23 @@ export default function Footer() {
               <circle cx='17' cy='12' r='4' fill='#ff0084'></circle>
             </svg>
           </Link>
+        </div>
+        <div>
+          <span className='footer-title'>
+            Download the Anna&apos;s Artistic Store® App
+          </span>
+          <a
+            href='https://play.google.com/store/apps/details?id=store.anartist.anartiststore'
+            target='_blank'
+            style={{ alignSelf: 'center' }}
+          >
+            <Image
+              src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'
+              alt='Get it on Google Play'
+              width={240}
+              height={80}
+            />
+          </a>
         </div>
       </div>
     </footer>

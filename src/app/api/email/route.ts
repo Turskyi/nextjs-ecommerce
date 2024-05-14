@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
   const { email, subject, message } = body;
   try {
     const data = await resend.emails.send({
-      from: `${APP_NAME} <test@an-artist.store>`,
+      from: `Do Not Reply ${APP_NAME} <test@an-artist.store>`,
       to: [env.SUPER_ADMIN],
       subject: `Test: ${subject}`,
       text: `Test.\n\n${message}\n\nEmail: ${email}`,
@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
 
     return Response.json(data);
   } catch (error) {
-    console.log('DEb: error' + error);
     return Response.json({ error });
   }
 }
