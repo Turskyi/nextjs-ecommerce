@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: true,
     remotePatterns: [
       { hostname: 'images.unsplash.com' },
       { hostname: 'lh3.googleusercontent.com' },
@@ -17,9 +18,6 @@ const nextConfig = {
       { hostname: 'www.dropbox.com' },
       { hostname: 'play.google.com' },
     ],
-  },
-  experimental: {
-    serverActions: true,
   },
 };
 
