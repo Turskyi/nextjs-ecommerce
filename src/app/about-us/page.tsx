@@ -22,12 +22,12 @@ export default function AboutUs() {
           <p className='text-lg mb-4'>
             Anna has always been an artistic soul, from sketching as a child to
             finding her unique style in urban fashion as a teenager. Her passion
-            for creativity extends to her work as a photomodel, where she
+            for creativity extends to her work as a photo-model, where she
             embraces every opportunity to stand in front of the camera.
           </p>
           <p className='text-lg mb-4'>
             Self-taught in Photoshop and with a circle of friends in rock
-            climbing and monowheel communities, Anna designs popular, functional
+            climbing and mono-wheel communities, Anna designs popular, functional
             bags for their equipment. Her time at a kids&apos; accessories
             atelier sparked her distinctive approach to creating soft dolls—each
             piece a reflection of her complex personality, even if a little
