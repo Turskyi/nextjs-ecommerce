@@ -69,7 +69,7 @@ export async function updateProduct(productId: string) {
   try {
     const session = await getServerSession(authOptions);
     if (!isAdmin(session)) {
-      throw new Error('Not authorized');
+      throw new Error('Not authorized 😞');
     }
 
     revalidatePath('/update-product/[id]');
