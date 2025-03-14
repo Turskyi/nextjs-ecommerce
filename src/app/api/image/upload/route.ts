@@ -19,7 +19,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: 'You are not admin ಠ_ಠ' });
   }
   const file = request.body || '';
-  // ⚠️ The below code is for App Router Route Handlers only
+  // ⚠️ The below code is for App Router Route Handlers only.
   const blob = await put(filename, file, {
     access: 'public',
     addRandomSuffix: false,

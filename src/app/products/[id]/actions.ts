@@ -44,7 +44,7 @@ export async function incrementProductQuantity(productId: string) {
 export async function deleteProduct(productId: string) {
   try {
     const session = await getServerSession(authOptions);
-    
+
     if (!isAdmin(session)) {
       throw new Error('Not authorized');
     }
@@ -55,7 +55,7 @@ export async function deleteProduct(productId: string) {
 
     revalidatePath('/');
   } catch (error) {
-    let message = 'Unexpected error';
+    let message = 'Unexpected error 😞';
     if (error instanceof Error) {
       message = error.message;
     }
@@ -74,7 +74,7 @@ export async function updateProduct(productId: string) {
 
     revalidatePath('/update-product/[id]');
   } catch (error) {
-    let message = 'Unexpected error';
+    let message = 'Unexpected error 😞';
     if (error instanceof Error) {
       message = error.message;
     }

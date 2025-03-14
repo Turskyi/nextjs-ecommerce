@@ -74,11 +74,18 @@ export async function sendOrderEmail(
   const message = `Order ${cart.id}:\n\n${cart.items
     .map(
       (item) =>
-        `Cart Item ID: ${item.id}\nProduct Name: ${item.product.name}\nQuantity: ${item.quantity}\nPrice: ${formatPrice(item.product.price)}\n\n`,
+        `Cart Item ID: ${item.id}\nProduct Name: ${item.product.name}\n
+      Quantity: ${item.quantity}\n
+      Price: ${formatPrice(item.product.price)}\n\n`,
     )
-    .join(
-      '',
-    )}\n\nTotal: ${formatPrice(cart.subtotal)}\n\nUser Email: ${contactInfo.email}\n\nUser Name: ${contactInfo.firstName} ${contactInfo.lastName}\n\nUser Phone: ${contactInfo.phoneNumber}\n\nUser Street: ${contactInfo.street}\n\nUser City: ${contactInfo.city}\n\nUser Postal code: ${contactInfo.postalCode}\n\nUser Country: ${contactInfo.country}.`;
+    .join('')}\n\nTotal: ${formatPrice(cart.subtotal)}\n\n
+    User Email: ${contactInfo.email}\n\n
+    User Name: ${contactInfo.firstName} ${contactInfo.lastName}\n\n
+    User Phone: ${contactInfo.phoneNumber}\n\n
+    User Street: ${contactInfo.street}\n\n
+    User City: ${contactInfo.city}\n\n
+    User Postal code: ${contactInfo.postalCode}\n\n
+    User Country: ${contactInfo.country}.`;
   try {
     await fetch(`${env.NEXTAUTH_URL}/api/order`, {
       method: 'POST',

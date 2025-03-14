@@ -14,7 +14,9 @@ export async function sendContactEmail(contactEmail: ContactEmail) {
   const email = contactEmail.email;
   const subject = `New Message Received from ${APP_NAME}`;
   // Format the order details into a message
-  const message = `New contact message received:\n\nEmail: ${contactEmail.email}\n\nName: ${contactEmail.name}\n\nMessage: ${contactEmail.message}.`;
+  const message = `New contact message received:\n\n
+  Email: ${contactEmail.email}\n\nName: ${contactEmail.name}\n\n
+  Message: ${contactEmail.message}.`;
   try {
     await fetch(`${env.NEXTAUTH_URL}/api/send`, {
       method: 'POST',

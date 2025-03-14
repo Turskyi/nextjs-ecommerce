@@ -17,6 +17,8 @@ const nextConfig = {
       { hostname: 'dl.dropboxusercontent.com' },
       { hostname: 'www.dropbox.com' },
       { hostname: 'play.google.com' },
+      { hostname: 'anartist.turskyi.com' },
+      { hostname: 'anna-ecommerce.web.app' },
     ],
   },
 };

@@ -3,16 +3,16 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Turskyi/nextjs-ecommerce)
 <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Turskyi/nextjs-ecommerce">
 
-# AnArtist.Store
+# Anna's Artistic Store
 
-Welcome to **AnArtist.Store**, a shop where creativity comes to life! 🎨
+Welcome to **Anna's Artistic Store**, a shop where creativity comes to life! 🎨
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped
 with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Overview
 
-**AnArtist.Store** is an e-commerce project dedicated to showcasing unique and
+**Anna's Artistic Store** is an e-commerce project dedicated to showcasing unique and
 handmade creations by talented
 artist [Anna](https://www.instagram.com/anartistart).
 From stylish clothes to
