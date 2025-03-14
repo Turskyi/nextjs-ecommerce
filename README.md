@@ -3,7 +3,7 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Turskyi/nextjs-ecommerce)
 <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Turskyi/nextjs-ecommerce">
 
-# Anna's Artistic Store
+# Anna's Artistic Store (Web)
 
 Welcome to **Anna's Artistic Store**, a shop where creativity comes to life! 🎨
 
