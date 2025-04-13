@@ -7,16 +7,38 @@
 
 Welcome to **Anna's Artistic Store**, a shop where creativity comes to life! 🎨
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped
-with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Available Versions
+
+- **Next.js Version (Web)**:
+  [https://anartist.turskyi.com](https://anartist.turskyi.com)  
+   This version is built with Next.js and serves as the primary web application.
+  It provides server-side rendering and SEO optimization, along with a RESTful
+  API backend.
+
+- **Flutter Version (Web)**:
+  [https://anna-ecommerce.web.app](https://anna-ecommerce.web.app)  
+   This version is built with Flutter for the web. It was created because
+  Firebase hosting is free and easy to set up, requiring no additional
+  maintenance. However, it is not used as the primary version due to Flutter
+  web's limitations in server-side rendering and SEO optimization.
+
+### Why Both Versions?
+
+Having both versions allows us to leverage the strengths of each platform. The
+Next.js version is optimized for SEO and serves as the backend API provider,
+while the Flutter version showcases the flexibility of Flutter for web.
+Since Firebase hosting is free and effortless to maintain, it made sense to have
+it as an additional option.
 
 ## Overview
 
-**Anna's Artistic Store** is an e-commerce project dedicated to showcasing unique and
-handmade creations by talented
-artist [Anna](https://www.instagram.com/anartistart).
-From stylish clothes to
-whimsical soft toys, each piece is crafted with care and passion.
+**Anna's Artistic Store** is an e-commerce project dedicated to showcasing
+unique and handmade creations by talented artist
+[Anna](https://www.instagram.com/anartistart).
+From stylish clothes to whimsical soft toys, each piece is crafted with care and passion.
 
 ## Features
 
@@ -87,11 +109,9 @@ result.
   [Monolith](https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures#all-in-one-applications);
 
 - **Code Readability:** code is easily readable with no unnecessary blank lines,
-  no unused variables
-  or methods, and no commented-out code, all variables, methods, and resource
-  IDs are descriptively
-  named such that another developer reading the code can easily understand their
-  function.
+  no unused variables or methods, and no commented-out code, all variables,
+  methods, and resource IDs are descriptively named such that another developer
+  reading the code can easily understand their function.
 
 ## Contributing
 
