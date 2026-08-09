@@ -13,6 +13,8 @@ export default function AddProductPage() {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const inputNameRef = useRef<HTMLInputElement>(null);
   const [blob, setBlob] = useState<PutBlobResult | null>(null);
+  const [imageUrl, setImageUrl] = useState('');
+
   return (
     <div>
       <h1 className='text-lg mb-3 font-bold'>Add Product</h1>
@@ -31,11 +33,11 @@ export default function AddProductPage() {
           className='textarea textarea-bordered mb-3 w-full'
         />
         <input
-          required
           name='imageUrl'
           placeholder='Image URL'
           type='url'
-          defaultValue={blob?.url}
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
           className='mb-3 w-full input input-bordered'
         />
         <input
@@ -73,6 +75,7 @@ export default function AddProductPage() {
             const newBlob = (await response.json()) as PutBlobResult;
 
             setBlob(newBlob);
+            setImageUrl(newBlob.url);
           }}
         >
           Upload
