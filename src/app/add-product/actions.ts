@@ -10,15 +10,9 @@ import { env } from '@/lib/env';
 import { nanoid } from 'nanoid';
 import path from 'path';
 
-export async function addProduct(formData: FormData) {
+export async function addProduct(prevState: any, formData: FormData) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    // TODO: also check if the user is admin.
-
-    // For the callback path, it’s recommended to use “signin” (without a
-    // hyphen) to maintain consistency with NextAuth.js conventions. This
-    // aligns with the default behavior of NextAuth.js, which expects HTTP POST
-    // requests for authentication actions.
     redirect('/api/auth/signin?callbackUrl=/add-product');
   }
 
@@ -32,28 +26,36 @@ export async function addProduct(formData: FormData) {
   const price = Number(formData.get('price') || 0);
   const productImage = formData.get('productImage') as File;
 
-  if (!name || !description || !price) {
-    throw Error('Missing required fields.');
+  if (!name || !description || !price || price <= 0) {
+    return { error: 'Missing or invalid fields. Name, description, and price (> 0) are required.' };
   }
 
-  if (!imageUrl && productImage && productImage.size > 0) {
-    const slug = `${toSlug(name)}-${nanoid(10)}`;
-    const filename = `product_images/${slug}${path.extname(productImage.name)}`;
-    const blob = await put(filename, productImage, {
-      access: 'public',
-      addRandomSuffix: false,
-      token: env.BLOB_READ_WRITE_TOKEN,
+  try {
+    if (!imageUrl && productImage && productImage.size > 0) {
+      if (productImage.size > 4.5 * 1024 * 1024) {
+        return { error: 'Image file is too large. Maximum size is 4.5MB.' };
+      }
+      const slug = `${toSlug(name)}-${nanoid(10)}`;
+      const filename = `product_images/${slug}${path.extname(productImage.name)}`;
+      const blob = await put(filename, productImage, {
+        access: 'public',
+        addRandomSuffix: false,
+        token: env.BLOB_READ_WRITE_TOKEN,
+      });
+      imageUrl = blob.url;
+    }
+
+    if (!imageUrl) {
+      return { error: 'Image URL or uploaded image is required.' };
+    }
+
+    await prisma.product.create({
+      data: { name, description, imageUrl, price },
     });
-    imageUrl = blob.url;
+  } catch (error: any) {
+    console.error('Error adding product:', error);
+    return { error: error.message || 'An unexpected error occurred while creating the product.' };
   }
-
-  if (!imageUrl) {
-    throw Error('Image URL or uploaded image is required.');
-  }
-
-  await prisma.product.create({
-    data: { name, description, imageUrl, price },
-  });
 
   redirect('/');
 }
