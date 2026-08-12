@@ -34,7 +34,7 @@ export default function PressKit() {
           <p className='text-lg mb-4'>
             In Zielona Góra, Anna discovered a community that celebrated her
             talents, allowing her to flourish as an artist. She has since been
-            creating beautiful clothes, dolls, bags, and paintings, all while
+            creating beautiful paintings and unique art pieces, all while
             continuing to explore her vast potential.
           </p>
         </section>

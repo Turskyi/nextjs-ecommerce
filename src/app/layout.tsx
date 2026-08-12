@@ -12,8 +12,8 @@ const fontFamily = Rubik({ subsets: ['latin'] });
 // Define domain as a constant
 
 export const metadata: Metadata = {
-  title: `${APP_NAME} - Handmade Clothes, Paintings, and Accessories`,
-  description: `Handmade with love: Dolls, paintings, accessories & clothes that spark imagination (${APP_NAME}).`,
+  title: `${APP_NAME} - Handmade Art and Paintings`,
+  description: `Discover unique handmade art and paintings that spark imagination (${APP_NAME}).`,
   metadataBase: new URL(DOMAIN),
   openGraph: {
     images: [
@@ -58,12 +58,12 @@ export default function RootLayout({
         <meta name='author' content={AUTHOR} />
         <meta
           name='keywords'
-          content='TypeScript, e-commerce, painting, handmade, sewing, diy, art'
+          content='TypeScript, e-commerce, painting, handmade, art, acrylic painting, canvas art'
         />
         <meta http-equiv='refresh' content='30' />
         <meta
           property='og:image:alt'
-          content='Handmade doll with fancy dress.'
+          content='Handmade art and paintings.'
         />
         <meta property='fb:app_id' content='433879415973046' />
       </Head>

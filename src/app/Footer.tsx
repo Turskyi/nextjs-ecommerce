@@ -14,21 +14,6 @@ export default function Footer() {
     <footer className="bg-neutral p-10 text-neutral-content">
       <div className="footer m-auto max-w-7xl">
         <div>
-          <span className="footer-title">Services</span>
-          <Link href="/search?query=accessories" className="link-hover link">
-            Accessories
-          </Link>
-          <Link href="/search?query=clothing" className="link-hover link">
-            Clothing
-          </Link>
-          <Link href="/search?query=dolls" className="link-hover link">
-            Dolls
-          </Link>
-          <Link href="/search?query=art" className="link-hover link">
-            Art
-          </Link>
-        </div>
-        <div>
           <span className="footer-title">Company</span>
           <Link href="/about-us" className="link-hover link">
             About us

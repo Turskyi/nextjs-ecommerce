@@ -14,13 +14,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with
 
 - **Next.js Version (Web)**:
   [https://anartist.turskyi.com](https://anartist.turskyi.com)  
-   This version is built with Next.js and serves as the primary web application.
+  This version is built with Next.js and serves as the primary web application.
   It provides server-side rendering and SEO optimization, along with a RESTful
   API backend.
 
 - **Flutter Version (Web)**:
   [https://anna-ecommerce.web.app](https://anna-ecommerce.web.app)  
-   This version is built with Flutter for the web. It was created because
+  This version is built with Flutter for the web. It was created because
   Firebase hosting is free and easy to set up, requiring no additional
   maintenance. However, it is not used as the primary version due to Flutter
   web's limitations in server-side rendering and SEO optimization.
@@ -38,7 +38,8 @@ it as an additional option.
 **Anna's Artistic Store** is an e-commerce project dedicated to showcasing
 unique and handmade creations by talented artist
 [Anna](https://www.instagram.com/anartistart).
-From stylish clothes to whimsical soft toys, each piece is crafted with care and passion.
+From stylish clothes to whimsical soft toys, each piece is crafted with care and
+passion.
 
 ## Features
 

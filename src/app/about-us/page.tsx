@@ -27,7 +27,7 @@ export default function AboutUs() {
           </p>
           <p className='text-lg mb-4'>
             Self-taught in Photoshop and with a circle of friends in rock
-            climbing and mono-wheel communities, Anna designs popular, functional
+            climbing and mono-wheel communities, Anna has designed popular, functional
             bags for their equipment. Her time at a kids&apos; accessories
             atelier sparked her distinctive approach to creating soft dolls—each
             piece a reflection of her complex personality, even if a little
@@ -47,21 +47,16 @@ export default function AboutUs() {
           <h2 className='text-3xl font-bold mb-4'>Our Art</h2>
           <p className='text-lg mb-4'>
             Anna&apos;s art is a vibrant tapestry of life&apos;s colors, woven
-            from the threads of her diverse experiences. Her soft dolls, a
-            signature creation, are a testament to her unique vision—each piece
-            a narrative, sometimes whimsical, sometimes contemplative, but
-            always deeply personal. Her bags are not just carriers but
-            companions for adventurers and everyday heroes, crafted with care
-            for climbers and urban explorers alike. The paintings, from the
-            kaleidoscopic portrait of a cat to the serene beauty captured on
-            maple leaves, invite onlookers into a world where every hue sings
-            and every line tells a story.
+            from the threads of her diverse experiences. Her current focus is on
+            paintings, from the kaleidoscopic portrait of a cat to the serene
+            beauty captured on maple leaves, inviting onlookers into a world where
+            every hue sings and every line tells a story.
           </p>
           <p className='text-lg mb-4'>
-            Her clothing designs mirror her philosophy of life—comfort without
-            compromising style, functionality fused with flair. Each piece is a
-            celebration of individuality and a bold statement of
-            self-expression.
+            Her artistic journey has been diverse, encompassing the creation of
+            intricate soft dolls and functional equipment for adventurers.
+            However, her true passion and current professional focus lies in
+            expressing herself through the canvas.
           </p>
         </section>
 
