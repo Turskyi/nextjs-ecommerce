@@ -5,6 +5,7 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
 import SessionProvider from './SessionProvider';
 import Head from 'next/head';
+import Script from 'next/script';
 import { APP_NAME, DOMAIN, AUTHOR } from '../../constants';
 
 const fontFamily = Rubik({ subsets: ['latin'] });
@@ -73,6 +74,21 @@ export default function RootLayout({
           <main className='p-4 max-w-7xl m-auto min-w-[300px]'>{children}</main>
           <Footer />
         </SessionProvider>
+        <Script
+          id='merchantWidgetScript'
+          src='https://www.gstatic.com/shopping/merchant/merchantwidget.js'
+          strategy='afterInteractive'
+        />
+        <Script id='google-badge-setup' strategy='afterInteractive'>
+          {`
+            document.getElementById('merchantWidgetScript').addEventListener('load', function () {
+              merchantwidget.start({
+                merchant_id: 5496025545,
+                position: 'BOTTOM_RIGHT'
+              });
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
