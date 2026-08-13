@@ -60,6 +60,15 @@ export default function ReturnPolicy() {
         </section>
 
         <section className="mb-6">
+          <h2 className="text-3xl font-bold mb-4">Exchanges</h2>
+          <p className="text-lg mb-4">
+            We do not accept exchanges. The best way to ensure you get what you
+            want is to return the item you have, and once the return is
+            accepted, make a separate purchase for the new item.
+          </p>
+        </section>
+
+        <section className="mb-6">
           <h2 className="text-3xl font-bold mb-4">Damaged Items</h2>
           <p className="text-lg mb-4">
             If you received a damaged product, please notify us immediately for
