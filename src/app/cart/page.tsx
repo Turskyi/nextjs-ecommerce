@@ -53,7 +53,7 @@ async function submitOrder(formData: FormData) {
   });
   await deleteCart(cart.id);
 
-  redirect('/');
+  redirect(`/order-success?orderId=${cart.id}&email=${email}&country=${country}`);
 }
 export default async function CartPage() {
   const cart = await getCart();
