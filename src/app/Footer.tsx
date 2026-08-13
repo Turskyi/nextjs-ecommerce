@@ -38,6 +38,9 @@ export default function Footer() {
           <Link href="/cookie-policy" className="link-hover link">
             Cookie policy
           </Link>
+          <Link href="/return-policy" className="link-hover link">
+            Return policy
+          </Link>
         </div>
         <div>
           <span className="footer-title">Currency</span>
