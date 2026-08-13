@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {
+  DEFAULT_CURRENCY_CODE,
+  DEFAULT_CURRENCY_SYMBOL,
   FLICKR,
   INSTAGRAM,
   MACOS_ZIP_URL,
@@ -36,6 +38,12 @@ export default function Footer() {
           <Link href="/cookie-policy" className="link-hover link">
             Cookie policy
           </Link>
+        </div>
+        <div>
+          <span className="footer-title">Currency</span>
+          <p>
+            Default Currency: {DEFAULT_CURRENCY_CODE} ({DEFAULT_CURRENCY_SYMBOL})
+          </p>
         </div>
         <div>
           <span className="footer-title">Follow Us</span>

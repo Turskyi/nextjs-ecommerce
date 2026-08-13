@@ -7,7 +7,7 @@ const resend = new Resend(env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { email, subject, message } = body;
+  const { email, subject, message, currency } = body;
   // Get current date and time.
   const currentDateTime = new Date().toLocaleString();
   try {
@@ -15,8 +15,9 @@ export async function POST(request: NextRequest) {
       from: `Do Not Reply ${APP_NAME} <test@${RESEND_DOMAIN}>`,
       to: [env.SUPER_ADMIN],
       subject: `Test: ${subject}`,
-      text: `Test.\n\n${message}\n\nEmail: ${email}\n\n
-      Date and Time: ${currentDateTime}`,
+      text: `Order Details:\n\n${message}\n\nEmail: ${email}\n\nCurrency: ${
+        currency || 'EUR'
+      }\n\nDate and Time: ${currentDateTime}`,
     });
 
     return Response.json(data);
