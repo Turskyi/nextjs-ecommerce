@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "26QZ8BPZFL.store.anartist.anartiststore",
+        "paths": ["/products/*"]
+      }
+    ]
+  }
+}

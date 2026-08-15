@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "store.anartist.anartiststore",
+      "sha256_cert_fingerprints": [
+        "AF:83:E3:8B:0A:0D:0A:D4:A8:EA:FF:A8:51:3E:C0:6B:50:68:E9:92:29:C7:FF:C7:30:95:5F:70:9D:4E:4B:6F"
+      ]
+    }
+  }
+]
