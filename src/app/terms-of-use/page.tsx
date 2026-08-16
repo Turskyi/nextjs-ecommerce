@@ -282,23 +282,12 @@ export default function TermsOfUse() {
           <h2 className='text-3xl font-bold mb-4'>Additional Assistance</h2>
           <p className='text-lg mb-4'>
             If you have any questions or concerns about the Terms, please use
-            our Contact section, call us at +1 (437) 985-2581, or write to us
-            at:
-            <br />
-            <strong>Dmytro Turskyi</strong>
-            <br />
-            500 Sherbourne St., Unit 2701
-            <br />
-            Toronto, Ontario
-            <br />
-            M4X 1L1
-            <br />
-            Canada
+            our Contact section or call us at +1 (437) 985-2581.
           </p>
           <p className='text-lg mb-4'>
             Please be assured that any Personal Information that you provide in
-            communications to the above email, telephone number, and postal
-            address will not be used to send you promotional materials.
+            communications to the above email and telephone number will not be
+            used to send you promotional materials.
           </p>
         </section>
       </main>
