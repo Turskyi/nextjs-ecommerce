@@ -33,8 +33,12 @@ export default function OrderSuccessPage({
 
   return (
     <div className='flex flex-col items-center justify-center min-h-[50vh]'>
-      <h1 className='text-2xl font-bold mb-4'>Order Successful!</h1>
-      <p className='mb-2'>Thank you for your order, {email}.</p>
+      <h1 className='text-2xl font-bold mb-4'>Order Submitted!</h1>
+      <p className='mb-2 text-center'>
+        Thank you for your order, {email}.
+        <br />
+        Anna will contact you shortly to arrange payment and delivery.
+      </p>
       <p className='mb-6'>Order ID: {orderId}</p>
 
       <Link href='/' className='btn btn-primary'>

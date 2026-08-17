@@ -19,12 +19,20 @@ export async function updateProduct(formData: FormData) {
   const description = formData.get('description')?.toString();
   const imageUrl = formData.get('imageUrl')?.toString();
   const price = Number(formData.get('price') || 0);
-  if (!name || !description || !imageUrl || !price) {
+  const availability = formData.get('availability')?.toString();
+
+  if (!name || !description || !imageUrl || !price || !availability) {
     throw Error('Missing required fields.');
   }
   await prisma.product.update({
     where: { id: productId },
-    data: { name, description, imageUrl, price },
+    data: {
+      name,
+      description,
+      imageUrl,
+      price,
+      availability: availability as any,
+    },
   });
 
   redirect('/');

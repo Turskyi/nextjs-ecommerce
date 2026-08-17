@@ -15,6 +15,7 @@ type Product = {
   imageUrl: string;
   name: string;
   price: number;
+  availability: string;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -93,6 +94,21 @@ export default function UpdateForm({ product }: UpdateFormProps) {
         Upload
       </button>
       <PriceInput defaultValue={product.price} />
+      <div className='mb-3'>
+        <label htmlFor='availability' className='block mb-2 text-sm font-medium'>
+          Availability
+        </label>
+        <select
+          name='availability'
+          id='availability'
+          defaultValue={product.availability}
+          className='select select-bordered w-full'
+        >
+          <option value='AVAILABLE'>Available</option>
+          <option value='RESERVED'>Reserved</option>
+          <option value='SOLD'>Sold</option>
+        </select>
+      </div>
       <FormSubmitButton className='btn-block'>Update Product</FormSubmitButton>
     </form>
   );

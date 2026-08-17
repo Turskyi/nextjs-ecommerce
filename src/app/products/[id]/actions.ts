@@ -9,6 +9,14 @@ import { isAdmin } from '@/lib/utils';
 import { redirect } from 'next/navigation';
 
 export async function incrementProductQuantity(productId: string) {
+  const product = await prisma.product.findUnique({
+    where: { id: productId },
+  });
+
+  if (!product || product.availability !== 'AVAILABLE') {
+    throw new Error('Product is no longer available.');
+  }
+
   const cart = (await getCart()) ?? (await createCart());
 
   const articleInCart = cart.items.find((item) => item.productId === productId);

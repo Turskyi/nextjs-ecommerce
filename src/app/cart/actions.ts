@@ -8,6 +8,15 @@ import { formatPrice } from '@/lib/format';
 import { APP_NAME } from '../../../constants';
 
 export async function setProductQuantity(productId: string, quantity: number) {
+  if (quantity > 0) {
+    const product = await prisma.product.findUnique({
+      where: { id: productId },
+    });
+    if (!product || product.availability !== 'AVAILABLE') {
+      throw new Error('Product is no longer available.');
+    }
+  }
+
   const cart = (await getCart()) ?? (await createCart());
   const articleInCart = cart.items.find((item) => item.productId === productId);
 
@@ -67,11 +76,12 @@ export interface ContactInfo {
 export async function sendOrderEmail(
   cart: ShoppingCart,
   contactInfo: ContactInfo,
+  orderId?: string,
 ) {
   const email = contactInfo.email;
   const subject = `New Order Received from ${APP_NAME}`;
   // Format the order details into a message
-  const message = `Order ${cart.id}:\n\n${cart.items
+  const message = `Order ${orderId || cart.id}:\n\n${cart.items
     .map(
       (item) =>
         `Cart Item ID: ${item.id}\nProduct Name: ${item.product.name}\n

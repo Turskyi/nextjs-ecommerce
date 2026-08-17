@@ -38,6 +38,9 @@ export default function CartEntry({
           <Link href={'/products/' + product.id} className='font-bold'>
             {product.name}
           </Link>
+          {product.availability !== 'AVAILABLE' && (
+            <div className='badge badge-error ml-2'>{product.availability}</div>
+          )}
           <div>Price: {formatPrice(product.price)}</div>
           <div className='my-1 flex items-center gap-2'></div>
           Quantity:

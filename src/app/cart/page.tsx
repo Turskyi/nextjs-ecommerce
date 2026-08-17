@@ -9,6 +9,9 @@ import { formatPrice } from '@/lib/format';
 import CheckoutButton from './CheckoutButton';
 import { APP_NAME } from '../../../constants';
 import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/db/prisma';
+import { getServerSession } from 'next-auth';
+import authOptions from '@/lib/configs/auth/authOptions';
 
 export const metadata = {
   title: `Your Cart - ${APP_NAME}`,
@@ -41,19 +44,84 @@ async function submitOrder(formData: FormData) {
   if (!cart) {
     throw new Error('Cart is empty');
   }
-  await sendOrderEmail(cart, {
-    email,
-    firstName,
-    lastName,
-    phoneNumber,
-    street,
-    city,
-    postalCode,
-    country,
-  });
-  await deleteCart(cart.id);
 
-  redirect(`/order-success?orderId=${cart.id}&email=${email}&country=${country}`);
+  const session = await getServerSession(authOptions);
+
+  const order = await prisma.$transaction(async (tx) => {
+    const productIds = cart.items.map((item) => item.productId);
+    const products = await tx.product.findMany({
+      where: {
+        id: { in: productIds },
+      },
+    });
+
+    for (const item of cart.items) {
+      const product = products.find((p) => p.id === item.productId);
+      if (!product || product.availability !== 'AVAILABLE') {
+        throw new Error(
+          `Product "${product?.name || 'Unknown'}" is no longer available.`,
+        );
+      }
+    }
+
+    const newOrder = await tx.order.create({
+      data: {
+        email,
+        firstName,
+        lastName,
+        phoneNumber,
+        street,
+        city,
+        postalCode,
+        country,
+        total: cart.subtotal,
+        status: 'PENDING',
+        userId: session?.user.id,
+        items: {
+          create: cart.items.map((item) => ({
+            productId: item.productId,
+            quantity: item.quantity,
+            price: item.product.price,
+          })),
+        },
+      },
+    });
+
+    await tx.product.updateMany({
+      where: {
+        id: { in: productIds },
+      },
+      data: {
+        availability: 'RESERVED',
+        reservedAt: new Date(),
+      },
+    });
+
+    await tx.cart.delete({
+      where: { id: cart.id },
+    });
+
+    return newOrder;
+  });
+
+  await sendOrderEmail(
+    cart,
+    {
+      email,
+      firstName,
+      lastName,
+      phoneNumber,
+      street,
+      city,
+      postalCode,
+      country,
+    },
+    order.id,
+  );
+
+  redirect(
+    `/order-success?orderId=${order.id}&email=${email}&country=${country}`,
+  );
 }
 export default async function CartPage() {
   const cart = await getCart();

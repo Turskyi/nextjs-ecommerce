@@ -5,11 +5,13 @@ import { useState, useTransition } from 'react';
 interface AddToCartButtonProps {
   productId: string;
   incrementProductQuantity: (productId: string) => Promise<void>;
+  disabled?: boolean;
 }
 
 export default function AddToCartButton({
   productId,
   incrementProductQuantity,
+  disabled,
 }: AddToCartButtonProps) {
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
@@ -18,6 +20,7 @@ export default function AddToCartButton({
     <div className='flex items-center gap-2'>
       <button
         className='btn btn-primary'
+        disabled={disabled}
         onClick={() => {
           setSuccess(false);
           startTransition(async () => {
