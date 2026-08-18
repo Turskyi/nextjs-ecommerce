@@ -13,17 +13,10 @@ interface CartEntryProps {
 }
 
 export default function CartEntry({
-  cartItem: { product, quantity },
+  cartItem: { product },
 }: CartEntryProps) {
   const [isPending, startTransition] = useTransition();
-  const quantityOptions: JSX.Element[] = [];
-  for (let i = 1; i <= 99; i++) {
-    quantityOptions.push(
-      <option value={i} key={i}>
-        {i}
-      </option>,
-    );
-  }
+
   return (
     <div>
       <div className='flex flex-wrap items-center gap-3'>
@@ -42,23 +35,17 @@ export default function CartEntry({
             <div className='badge badge-error ml-2'>{product.availability}</div>
           )}
           <div>Price: {formatPrice(product.price)}</div>
-          <div className='my-1 flex items-center gap-2'></div>
-          Quantity:
-          <select
-            className='select select-bordered w-full max-w-[80px]'
-            defaultValue={quantity}
-            onChange={(e) => {
-              const newQuantity = parseInt(e.currentTarget.value);
-              startTransition(async () => {
-                await setProductQuantity(product.id, newQuantity);
-              });
-            }}
-          >
-            <option value={0}>0 (Remove)</option>
-            {quantityOptions}
-          </select>
-          <div className='flex items-center gap-3'>
-            Total: {formatPrice(product.price * quantity)}
+          <div className='my-1 flex items-center gap-2'>
+            <button
+              className='btn btn-ghost btn-xs text-error'
+              onClick={() =>
+                startTransition(async () => {
+                  await setProductQuantity(product.id, 0);
+                })
+              }
+            >
+              Remove from cart
+            </button>
           </div>
           {isPending && (
             <span className='loading loading-spinner loading-sm'></span>

@@ -8,7 +8,9 @@ import { formatPrice } from '@/lib/format';
 import { APP_NAME } from '../../../constants';
 
 export async function setProductQuantity(productId: string, quantity: number) {
-  if (quantity > 0) {
+  const targetQuantity = quantity > 0 ? 1 : 0;
+
+  if (targetQuantity > 0) {
     const product = await prisma.product.findUnique({
       where: { id: productId },
     });
@@ -18,32 +20,35 @@ export async function setProductQuantity(productId: string, quantity: number) {
   }
 
   const cart = (await getCart()) ?? (await createCart());
-  const articleInCart = cart.items.find((item) => item.productId === productId);
+  const existingItem = cart.items.find((item) => item.productId === productId);
 
-  if (quantity === 0) {
-    if (articleInCart) {
+  if (targetQuantity === 0) {
+    if (existingItem) {
       await prisma.cart.update({
         where: { id: cart.id },
         data: {
           items: {
-            delete: { id: articleInCart.id },
+            delete: { id: existingItem.id },
           },
         },
       });
     }
   } else {
-    if (articleInCart) {
-      await prisma.cart.update({
-        where: { id: cart.id },
-        data: {
-          items: {
-            update: {
-              where: { id: articleInCart.id },
-              data: { quantity },
+    if (existingItem) {
+      // If already in cart, ensure quantity is 1
+      if (existingItem.quantity !== 1) {
+        await prisma.cart.update({
+          where: { id: cart.id },
+          data: {
+            items: {
+              update: {
+                where: { id: existingItem.id },
+                data: { quantity: 1 },
+              },
             },
           },
-        },
-      });
+        });
+      }
     } else {
       await prisma.cart.update({
         where: { id: cart.id },
@@ -51,7 +56,7 @@ export async function setProductQuantity(productId: string, quantity: number) {
           items: {
             create: {
               productId,
-              quantity,
+              quantity: 1,
             },
           },
         },

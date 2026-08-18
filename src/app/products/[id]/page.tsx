@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import { cache } from 'react';
 import AddToCartButton from './AddToCartButton';
 import {
-  incrementProductQuantity,
+  addProductToCart,
   deleteProduct,
   updateProduct,
 } from './actions';
@@ -88,7 +88,7 @@ export default async function ProductPage({
         ) : (
           <AddToCartButton
             productId={product.id}
-            incrementProductQuantity={incrementProductQuantity}
+            addProductToCart={addProductToCart}
             disabled={product.availability !== 'AVAILABLE'}
           />
         )}

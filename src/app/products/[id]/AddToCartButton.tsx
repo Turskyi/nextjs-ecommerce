@@ -4,13 +4,13 @@ import { useState, useTransition } from 'react';
 
 interface AddToCartButtonProps {
   productId: string;
-  incrementProductQuantity: (productId: string) => Promise<void>;
+  addProductToCart: (productId: string) => Promise<void>;
   disabled?: boolean;
 }
 
 export default function AddToCartButton({
   productId,
-  incrementProductQuantity,
+  addProductToCart,
   disabled,
 }: AddToCartButtonProps) {
   const [isPending, startTransition] = useTransition();
@@ -24,7 +24,7 @@ export default function AddToCartButton({
         onClick={() => {
           setSuccess(false);
           startTransition(async () => {
-            await incrementProductQuantity(productId);
+            await addProductToCart(productId);
             setSuccess(true);
           });
         }}

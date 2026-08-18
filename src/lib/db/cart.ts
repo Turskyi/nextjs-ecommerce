@@ -146,10 +146,8 @@ function mergeCartItems(...cartItems: CartItem[][]): CartItem[] {
   return cartItems.reduce((acc, items) => {
     items.forEach((item) => {
       const existingItem = acc.find((i) => i.productId === item.productId);
-      if (existingItem) {
-        existingItem.quantity += item.quantity;
-      } else {
-        acc.push(item);
+      if (!existingItem) {
+        acc.push({ ...item, quantity: 1 });
       }
     });
     return acc;
